@@ -1,0 +1,43 @@
+name: myApp
+
+networks:
+ myApp_net:
+  driver: bridge
+
+volumes:
+ db-content:
+ wp-content:
+
+services:
+#  nginx:
+#   build: ./requirement/nginx
+#   ports:
+#    - "443:443"
+#   networks:
+#    - myApp_net
+#   volumes:
+#    - wp-content:/var/www/html
+#   depends_on:
+#    - wordpress
+
+ mariadb:
+  build: ./requirements/mariadb
+  ports:
+   - "3306:3306"
+  networks:
+   - myApp_net
+  volumes:
+   - db-content:/var/lib/mysql
+
+#  wordpress:
+#   build: ./requirements/wordpress
+#   ports:
+#    - "443:443"
+#   networks:
+#    - myApp_net
+#   volumes:
+#    - wp-content:/var/www/html
+#   env_file:
+#    - ./.env
+#   depends_on:
+#    - mariadb
