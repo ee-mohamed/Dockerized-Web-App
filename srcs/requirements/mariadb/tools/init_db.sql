@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS wordpress;
+
+CREATE USER IF NOT EXISTS 'wp-user'@'%' IDENTIFIED BY 'dbpass123';
+
+GRANT ALL ON wordpress.* TO 'wp-user'@'%';
+
+FLUSH PRIVILEGES;
+
+EXIT
